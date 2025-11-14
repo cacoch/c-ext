@@ -9,5 +9,8 @@ LIB_SOURCES = division.c \
 %.o: %.c $(LIB_SOURCES)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: main.c
-	$(CC) main.c -o main
+LIB_OBJECTS	   = $(LIB_SOURCES:.c=.o) 
+
+main: main.o suma.o
+	$(CC) -o main main.o $(LIB_OBJECTS)
+
