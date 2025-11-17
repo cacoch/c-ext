@@ -1,8 +1,8 @@
 
 
-int resta( int, int);
+#include "modulo.h"
 
- resta( a, b) {
-	 return a - b;
+int  modulo(int a,int b) {
+	 return a % b;
  }
 

@@ -1,8 +1,8 @@
 
 
-int product (int , int );
+#include "producto.h"
 
 
-product(int a, int b) {
+int producto(int a, int b) {
 	return a * b;
 }
