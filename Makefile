@@ -6,22 +6,15 @@ LIB_SOURCES = modulo.c \
               resta.c \
               suma.c 
 
-LIB_OBJECTS = modulo.o \
-              producto.o \
-              resta.o \
-              suma.o 
+LIB_OBJECTS = $(LIB_SOURCES:.c=.o)
+             
 
-#
-#%.o: %.c 
-#	$(CC) -c $(LIB_SOURCES) -o $(LIB_OBJECTS)
  
-#$(LIB_OBJECTS):  $(LIB_SOURCES)
-#	$(CC) -c $(LIB_SOURCES) # -o $(LIB_OBJECTS) 
 
-all: nolib lib stlib shlib
+all: nolib stlib shlib
 
 
-lib: $(LIB_OBJECTS)
+libtest.a: $(LIB_OBJECTS)
 	$(CC) -c $(LIB_SOURCES) # -o $(LIB_OBJECTS) 
 	ar rcs libtest.a $(LIB_OBJECTS)  
 
@@ -48,4 +41,8 @@ shlib: libsh.so
 
 clean:
 	rm -v *.o
+	rm -v *.so
+	rm -v *.a
 	rm -v nolib
+
+#$ gcc -L/home/username/foo -Wl,-rpath=/home/username/foo -Wall -o test main.c -lfoo
